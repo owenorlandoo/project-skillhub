@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><title>Edit Kelas</title><script src="https://cdn.tailwindcss.com"></script></head>
+<!-- TAMPILAN UNTUK EDIT KELAS/COURSE -->
 <body class="bg-gray-100 p-8 flex justify-center">
     <div class="bg-white p-8 rounded shadow w-full max-w-md">
         <h1 class="text-xl font-bold mb-4">Edit Kelas</h1>

@@ -8,12 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class SkillHubController extends Controller
 {
-    // --- HALAMAN UTAMA (DASHBOARD) ---
+    // --- DASHBOARD ---
     public function index() {
         $students = Student::all();
         $courses = Course::all();
 
-        // Query manual untuk mengambil data pendaftaran (History)
         $enrollments = DB::table('enrollments')
             ->join('students', 'enrollments.student_id', '=', 'students.id')
             ->join('courses', 'enrollments.course_id', '=', 'courses.id')
@@ -84,7 +83,7 @@ class SkillHubController extends Controller
         return back()->with('success', 'Pendaftaran Berhasil!');
     }
 
-    // --- LOGIC HAPUS (UNIVERSAL) ---
+    // --- LOGIC HAPUS ---
     public function destroy($type, $id) {
         if ($type == 'student') Student::destroy($id);
         elseif ($type == 'course') Course::destroy($id);

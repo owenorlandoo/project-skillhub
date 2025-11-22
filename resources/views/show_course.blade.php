@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><title>Detail Kelas</title><script src="https://cdn.tailwindcss.com"></script></head>
+<!-- TAMPILAN COURSE/KELAS -->
 <body class="bg-gray-100 p-8">
     <div class="max-w-2xl mx-auto bg-white p-8 rounded shadow">
         <div class="flex justify-between mb-6 border-b pb-4">

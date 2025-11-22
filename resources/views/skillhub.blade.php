@@ -9,26 +9,21 @@
 <body class="bg-gray-100 font-sans p-4 md:p-8 text-gray-800">
 
     <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-
-        <!-- HEADER -->
         <div class="flex justify-between items-center mb-6 border-b-2 border-black pb-4">
             <div>
-                <h1 class="text-3xl font-extrabold tracking-tight">SKILLHUB.</h1>
+                <h1 class="text-3xl font-extrabold">SKILLHUB</h1>
                 <p class="text-gray-500 text-sm">Sistem Manajemen Pelatihan</p>
             </div>
-            <div class="bg-black text-white px-4 py-1 rounded text-xs font-bold uppercase">Mode Asesmen</div>
         </div>
-
-        <!-- NOTIFIKASI -->
+        <!--NOTIF -->
         @if(session('success')) <div class="bg-green-100 text-green-800 p-3 rounded mb-4 border-l-4 border-green-600 font-bold">{{ session('success') }}</div> @endif
         @if(session('error')) <div class="bg-red-100 text-red-800 p-3 rounded mb-4 border-l-4 border-red-600 font-bold">{{ session('error') }}</div> @endif
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-            <!-- KIRI: INPUT DATA -->
             <div class="space-y-8">
 
-                <!-- 1. DATA PESERTA -->
+                <!--DATA PESERTA -->
                 <div class="bg-gray-50 p-4 rounded border">
                     <h2 class="font-bold text-lg mb-3 flex items-center gap-2">
                         <span class="bg-black text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span> Data Peserta
@@ -62,7 +57,7 @@
                     </div>
                 </div>
 
-                <!-- 2. DATA KELAS -->
+                <!-- DATA KELAS -->
                 <div class="bg-gray-50 p-4 rounded border">
                     <h2 class="font-bold text-lg mb-3 flex items-center gap-2">
                         <span class="bg-black text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span> Data Kelas
@@ -98,7 +93,7 @@
                 </div>
             </div>
 
-            <!-- KANAN: TRANSAKSI -->
+            <!-- PENDAFTARAN -->
             <div class="space-y-8">
                 <div class="bg-gray-900 text-white p-6 rounded-lg shadow-lg">
                     <h2 class="font-bold text-xl mb-4 flex items-center gap-2">
