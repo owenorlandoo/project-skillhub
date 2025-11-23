@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head><title>Edit Kelas</title><script src="https://cdn.tailwindcss.com"></script></head>
-<!-- TAMPILAN UNTUK EDIT KELAS/COURSE -->
 <body class="bg-gray-100 p-8 flex justify-center">
     <div class="bg-white p-8 rounded shadow w-full max-w-md">
         <h1 class="text-xl font-bold mb-4">Edit Kelas</h1>
-        <form action="{{ route('update.course', $course->id) }}" method="POST" class="space-y-4">
+        <!-- UPDATE: route('course.update') -->
+        <form action="{{ route('course.update', $course->id) }}" method="POST" class="space-y-4">
             @csrf
             <div><label>Nama Kelas</label><input type="text" name="name" value="{{ $course->name }}" class="w-full border p-2 rounded" required></div>
             <div><label>Instruktur</label><input type="text" name="instructor" value="{{ $course->instructor }}" class="w-full border p-2 rounded" required></div>

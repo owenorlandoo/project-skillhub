@@ -1,15 +1,33 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SkillHubController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EnrollmentController;
 
-Route::get('/', [SkillHubController::class, 'index'])->name('home');
-Route::post('/student', [SkillHubController::class, 'storeStudent'])->name('store.student');
-Route::get('/student/edit/{id}', [SkillHubController::class, 'editStudent'])->name('edit.student');
-Route::post('/student/update/{id}', [SkillHubController::class, 'updateStudent'])->name('update.student');
-Route::get('/student/show/{id}', [SkillHubController::class, 'showStudent'])->name('show.student');
-Route::post('/course', [SkillHubController::class, 'storeCourse'])->name('store.course');
-Route::get('/course/edit/{id}', [SkillHubController::class, 'editCourse'])->name('edit.course');
-Route::post('/course/update/{id}', [SkillHubController::class, 'updateCourse'])->name('update.course');
-Route::get('/course/show/{id}', [SkillHubController::class, 'showCourse'])->name('show.course');
-Route::post('/enroll', [SkillHubController::class, 'enroll'])->name('enroll');
-Route::get('/delete/{type}/{id}', [SkillHubController::class, 'destroy'])->name('delete');
+// DASHBOARD
+Route::get('/', [DashboardController::class, 'index'])->name('home');
+
+// STUDENT
+Route::controller(StudentController::class)->prefix('student')->name('student.')->group(function () {
+    Route::post('/store', 'store')->name('store');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::post('/update/{id}', 'update')->name('update');
+    Route::get('/show/{id}', 'show')->name('show');
+    Route::get('/delete/{id}', 'destroy')->name('destroy');
+});
+
+// COURSES
+Route::controller(CourseController::class)->prefix('course')->name('course.')->group(function () {
+    Route::post('/store', 'store')->name('store');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::post('/update/{id}', 'update')->name('update');
+    Route::get('/show/{id}', 'show')->name('show');
+    Route::get('/delete/{id}', 'destroy')->name('destroy');
+});
+
+// ENROLLMENT
+Route::controller(EnrollmentController::class)->prefix('enrollment')->name('enrollment.')->group(function () {
+    Route::post('/store', 'store')->name('store');
+    Route::get('/delete/{id}', 'destroy')->name('destroy');
+});

@@ -15,7 +15,8 @@
                 <p class="text-gray-500 text-sm">Sistem Manajemen Pelatihan</p>
             </div>
         </div>
-        <!--NOTIF -->
+
+        <!-- NOTIFIKASI -->
         @if(session('success')) <div class="bg-green-100 text-green-800 p-3 rounded mb-4 border-l-4 border-green-600 font-bold">{{ session('success') }}</div> @endif
         @if(session('error')) <div class="bg-red-100 text-red-800 p-3 rounded mb-4 border-l-4 border-red-600 font-bold">{{ session('error') }}</div> @endif
 
@@ -23,12 +24,13 @@
 
             <div class="space-y-8">
 
-                <!--DATA PESERTA -->
+                <!-- DATA PESERTA -->
                 <div class="bg-gray-50 p-4 rounded border">
                     <h2 class="font-bold text-lg mb-3 flex items-center gap-2">
                         <span class="bg-black text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">1</span> Data Peserta
                     </h2>
-                    <form action="{{ route('store.student') }}" method="POST" class="flex gap-2 mb-4">
+                    <!-- PERBAIKAN RUTE: student.store -->
+                    <form action="{{ route('student.store') }}" method="POST" class="flex gap-2 mb-4">
                         @csrf
                         <div class="flex-1 space-y-2">
                             <input type="text" name="name" placeholder="Nama Lengkap" required class="w-full border p-2 rounded text-sm">
@@ -46,9 +48,10 @@
                                 <tr class="border-b hover:bg-gray-50">
                                     <td class="p-2">{{ $s->name }}</td>
                                     <td class="p-2 text-center flex justify-center gap-1">
-                                        <a href="{{ route('show.student', $s->id) }}" class="text-green-600 font-bold text-xs border border-green-200 px-2 py-1 rounded">Detail</a>
-                                        <a href="{{ route('edit.student', $s->id) }}" class="text-blue-600 font-bold text-xs border border-blue-200 px-2 py-1 rounded">Edit</a>
-                                        <a href="{{ route('delete', ['type'=>'student', 'id'=>$s->id]) }}" onclick="return confirm('Hapus?')" class="text-red-600 font-bold text-xs border border-red-200 px-2 py-1 rounded">Hapus</a>
+                                        <!-- PERBAIKAN RUTE: student.show, student.edit, student.destroy -->
+                                        <a href="{{ route('student.show', $s->id) }}" class="text-green-600 font-bold text-xs border border-green-200 px-2 py-1 rounded">Detail</a>
+                                        <a href="{{ route('student.edit', $s->id) }}" class="text-blue-600 font-bold text-xs border border-blue-200 px-2 py-1 rounded">Edit</a>
+                                        <a href="{{ route('student.destroy', $s->id) }}" onclick="return confirm('Hapus?')" class="text-red-600 font-bold text-xs border border-red-200 px-2 py-1 rounded">Hapus</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -62,7 +65,8 @@
                     <h2 class="font-bold text-lg mb-3 flex items-center gap-2">
                         <span class="bg-black text-white w-6 h-6 rounded-full flex items-center justify-center text-xs">2</span> Data Kelas
                     </h2>
-                    <form action="{{ route('store.course') }}" method="POST" class="flex flex-col gap-2 mb-4">
+                    <!-- PERBAIKAN RUTE: course.store -->
+                    <form action="{{ route('course.store') }}" method="POST" class="flex flex-col gap-2 mb-4">
                         @csrf
                         <div class="flex gap-2">
                             <input type="text" name="name" placeholder="Nama Kelas" required class="flex-1 border p-2 rounded text-sm">
@@ -81,9 +85,10 @@
                                 <tr class="border-b hover:bg-gray-50">
                                     <td class="p-2 font-bold">{{ $c->name }}</td>
                                     <td class="p-2 text-center flex justify-center gap-1">
-                                        <a href="{{ route('show.course', $c->id) }}" class="text-green-600 font-bold text-xs border border-green-200 px-2 py-1 rounded">Detail</a>
-                                        <a href="{{ route('edit.course', $c->id) }}" class="text-blue-600 font-bold text-xs border border-blue-200 px-2 py-1 rounded">Edit</a>
-                                        <a href="{{ route('delete', ['type'=>'course', 'id'=>$c->id]) }}" onclick="return confirm('Hapus?')" class="text-red-600 font-bold text-xs border border-red-200 px-2 py-1 rounded">Hapus</a>
+                                        <!-- PERBAIKAN RUTE: course.show, course.edit, course.destroy -->
+                                        <a href="{{ route('course.show', $c->id) }}" class="text-green-600 font-bold text-xs border border-green-200 px-2 py-1 rounded">Detail</a>
+                                        <a href="{{ route('course.edit', $c->id) }}" class="text-blue-600 font-bold text-xs border border-blue-200 px-2 py-1 rounded">Edit</a>
+                                        <a href="{{ route('course.destroy', $c->id) }}" onclick="return confirm('Hapus?')" class="text-red-600 font-bold text-xs border border-red-200 px-2 py-1 rounded">Hapus</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -99,7 +104,8 @@
                     <h2 class="font-bold text-xl mb-4 flex items-center gap-2">
                         <span class="bg-white text-black w-6 h-6 rounded-full flex items-center justify-center text-xs">3</span> Pendaftaran
                     </h2>
-                    <form action="{{ route('enroll') }}" method="POST" class="space-y-4">
+                    <!-- PERBAIKAN RUTE: enrollment.store -->
+                    <form action="{{ route('enrollment.store') }}" method="POST" class="space-y-4">
                         @csrf
                         <select name="student_id" class="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white">
                             <option value="">-- Pilih Peserta --</option>
@@ -123,7 +129,8 @@
                                 <tr class="border-b">
                                     <td class="p-2">{{ $e->s_name }}</td>
                                     <td class="p-2 font-bold">{{ $e->c_name }}</td>
-                                    <td class="p-2 text-center"><a href="{{ route('delete', ['type'=>'enrollment', 'id'=>$e->id]) }}" onclick="return confirm('Batal?')" class="text-red-500 font-bold">X</a></td>
+                                    <!-- PERBAIKAN RUTE: enrollment.destroy -->
+                                    <td class="p-2 text-center"><a href="{{ route('enrollment.destroy', $e->id) }}" onclick="return confirm('Batal?')" class="text-red-500 font-bold">X</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

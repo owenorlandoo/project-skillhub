@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Nov 2025 pada 00.10
+-- Waktu pembuatan: 23 Nov 2025 pada 08.00
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -60,6 +60,13 @@ CREATE TABLE `enrollments` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `enrollments`
+--
+
+INSERT INTO `enrollments` (`id`, `student_id`, `course_id`, `created_at`, `updated_at`) VALUES
+(6, 1, 2, '2025-11-22 17:08:14', '2025-11-22 17:08:14');
+
 -- --------------------------------------------------------
 
 --
@@ -70,7 +77,6 @@ CREATE TABLE `students` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `phone` varchar(20) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -79,10 +85,10 @@ CREATE TABLE `students` (
 -- Dumping data untuk tabel `students`
 --
 
-INSERT INTO `students` (`id`, `name`, `email`, `phone`, `created_at`, `updated_at`) VALUES
-(1, 'Owen Orlando', 'oorlando@student.ciputra.ac.id', NULL, '2025-11-22 15:06:22', '2025-11-22 15:06:22'),
-(2, 'Michelle Regina', 'mregina@student.ciputra.ac.id', NULL, '2025-11-22 15:08:51', '2025-11-22 15:08:51'),
-(3, 'Neville Hendrawan', 'nhendrawan@student.ciputra.ac.id', NULL, '2025-11-22 15:09:33', '2025-11-22 15:09:33');
+INSERT INTO `students` (`id`, `name`, `email`, `created_at`, `updated_at`) VALUES
+(1, 'Owen Orlando', 'oorlando@student.ciputra.ac.id', '2025-11-22 15:06:22', '2025-11-22 15:06:22'),
+(2, 'Michelle Regina', 'mregina@student.ciputra.ac.id', '2025-11-22 15:08:51', '2025-11-22 15:08:51'),
+(3, 'Neville Hendrawan', 'nhendrawan@student.ciputra.ac.id', '2025-11-22 15:09:33', '2025-11-22 15:09:33');
 
 --
 -- Indexes for dumped tables
@@ -117,13 +123,13 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT untuk tabel `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `enrollments`
 --
 ALTER TABLE `enrollments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `students`
